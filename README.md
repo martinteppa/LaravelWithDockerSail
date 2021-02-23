@@ -1,6 +1,7 @@
-Proyect with laravel 8
-1)works with laravel sail for an easy setup local enviroment. Instead of using php command, use sail.
-This provides a mail, php, and MySql image, with a volume so you can persist all your data.
-2)use composer to download extensions: jetstream, livewire, tailwind, hardevine
-3)use the migrations and then, use the command "db:seed" to create storage items in the database
+Proyect with laravel 8 <br>
+1)works with laravel sail for an easy setup local enviroment. Instead of using php command, use sail.<br>
+This provides a mail, php, and MySql image, with a volume so you can persist all your data.<br>
+2)use composer to download extensions: jetstream, livewire, tailwind, hardevine<br>
+3)use the migrations and then, use the command "db:seed" to create items in the database<br>
+4)after seeding data, you can use the users vendedor1 and vendedor2 to play with the app. Passwords equals to usernames.
 
