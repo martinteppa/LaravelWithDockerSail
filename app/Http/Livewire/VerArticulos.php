@@ -46,7 +46,7 @@ class VerArticulos extends Component
         
         $precios = $tabla->where('nombre','like','%'.$this->busqueda.'%')
         ->where('codigo_articulo','like','%'.$this->busqueCodigo.'%')
-        ->paginate(3);   
+        ->paginate(10);   
         return view('livewire.ver-articulos', ['precios' => $precios]);
        
  
