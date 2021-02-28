@@ -1,5 +1,5 @@
 <x-app-layout>
-  {{Cart::total()}}
+  
   <div class="flex flex-col shadow rounded bg-gray-100"> 
     <div class="mx-auto font-mono text-base lg:text-lg xl:text-xl">
       REVISE SU PEDIDO
