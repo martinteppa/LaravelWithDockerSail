@@ -52,11 +52,12 @@ npm install
 ```
 
 ## Migrations
-The following command will migrate in the sail enviroment the testing data to start working. After this you can enter in localhost with user "vendedor1" and password "vendedor1" to use the app
+The following command will migrate in the sail enviroment the testing data to start working. Then you need to seed the testing data. After this you can enter in localhost with user "vendedor1@gmail.com" and password "vendedor1" to use the app
 
 ```bash 
 sail artisan migrate
 ```
 
- 
-
+```bash  
+sail artisan db:seed
+```
