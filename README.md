@@ -1,9 +1,9 @@
 # Proyect with laravel 8  
 
-This is a basic practice project in laravel using docker. This is a sellers app. Each seller has a client list in wich a seller can order products that their clients wants to buy. You only need to have Docker installed
+This is a basic practice project in laravel using docker. This is a sellers app. Each seller has a client list in wich a seller can order products that their clients wants to buy. You only need to have Docker installed. Works with laravel sail for an easy setup local environment.
 
 ## Downloading 
-Works with laravel sail for an easy setup local environment.  After download, write the following commands. 
+Download Repository
  
 ```bash 
 git clone https://github.com/martinteppa/LaravelWithDockerSail.git
