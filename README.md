@@ -1,6 +1,6 @@
 # Proyect with laravel 8  
 
-This is a basic practice project in laravel using docker. This is a sellers app. Each seller has a client list in wich a seller can order products that their clients wants to buy.
+This is a basic practice project in laravel using docker. This is a sellers app. Each seller has a client list in wich a seller can order products that their clients wants to buy. You only need to have Docker installed
 
 ## Downloading 
 Works with laravel sail for an easy setup local environment.  After download, write the following commands. 
@@ -14,7 +14,7 @@ In another folder use the folowing command to download a clean sail app.
 ```bash 
 curl -s https://laravel.build/cleanapp| bash
 ```
-Then copy and paste the content in LaravelWithDockerSail in this clean instalation. This is because we need the folder vendor to run sail commands. 
+Then copy and paste the content in LaravelWithDockerSail in this clean instalation. This is because we need the folder vendor to run sail commands. Unfortunately this is the only solution that i can do at this moment
 
 ```bash 
 cd cleanapp
