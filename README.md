@@ -5,6 +5,13 @@ This is a basic practice project in laravel using docker. This is a sellers app.
 ## Downloading 
 Works with laravel sail for an easy setup local environment.  After download, write the following commands. 
 ```bash 
+curl -s https://laravel.build/LaravelWithDockerSail| bash
+```
+
+```bash 
+git clone LaravelWithDockerSail
+```
+```bash 
 cd LaravelWithDockerSail
 ```
 
