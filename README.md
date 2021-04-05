@@ -5,6 +5,10 @@ This is a basic practice project in laravel using docker. This is a sellers app.
 ## Downloading 
 Works with laravel sail for an easy setup local environment.  After download, write the following commands. 
 ```bash 
+cd LaravelWithDockerSail
+```
+
+```bash 
 alias sail='bash vendor/bin/sail'
 ```
 This command sets an alias that would make it easy to work using just the command "sail"
