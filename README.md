@@ -1,63 +1,124 @@
-# Proyect with laravel 8  
+# Laravel 8 — Sellers App
 
-This is a basic practice project in laravel using docker. This is a sellers app. Each seller has a client list in wich a seller can order products that their clients wants to buy. You need to have Docker installed, and linux or mac as your OS. Works with laravel sail for an easy setup local environment.
+A practice project built with Laravel 8 and Docker. This is a **sellers app** where each seller manages a client list and can place product orders on behalf of their clients.
 
-## Downloading 
-Download Repository
- 
-```bash 
+## Requirements
+
+- [Docker](https://www.docker.com/) installed and running
+- Linux or macOS
+
+---
+
+## Getting Started
+
+### 1. Clone the repository
+
+```bash
 git clone https://github.com/martinteppa/LaravelWithDockerSail.git
+cd LaravelWithDockerSail
 ```
 
-In another folder use the folowing command to download a clean sail app. 
+### 2. Copy the environment file
 
-```bash 
-curl -s https://laravel.build/cleanapp| bash
-```
-Then copy and paste the content in LaravelWithDockerSail in this clean instalation. This is because we need the folder vendor to run sail commands. Unfortunately this is the only solution that i can do at this moment
-
-```bash 
-cd cleanapp
+```bash
+cp .env.example .env
 ```
 
+### 3. Build and start the containers
 
-```bash 
-alias sail='bash vendor/bin/sail'
-```
-This command sets an alias that would make it easy to work using just the command "sail"
-
-
-```bash 
-sail up -d
-```
-You need to have docker running.This installation may take a while. If you have troubles with docker you need to type the next command if you are in linux
-```bash 
-newgrp docker
-```
-If you want to exit, just use: 
-```bash 
-sail down
+```bash
+docker compose up -d --build
 ```
 
+### 4. Install PHP dependencies
 
-## Composer and Node
-
-The following steps will download all de dependencies, like livewire, jetstream, tailwind.css. You need to use sail to work in the docker enviroment
-```bash 
-sail composer install
+```bash
+docker compose exec app composer install
 ```
 
-```bash 
-npm install
+### 5. Generate the application key
+
+```bash
+docker compose exec app php artisan key:generate
 ```
 
-## Migrations
-The following command will migrate in the sail enviroment the testing data to start working. Then you need to seed the testing data. After this you can enter in localhost with user "vendedor1@gmail.com" and password "vendedor1" to use the app
+### 6. Run migrations and seed test data
 
-```bash 
-sail artisan migrate
+```bash
+docker compose exec app php artisan migrate
+docker compose exec app php artisan db:seed
 ```
 
-```bash  
-sail artisan db:seed
+### 7. Install Node dependencies and compile assets
+
+```bash
+docker compose exec app npm install && npm run dev
 ```
+
+### 8. Access the app
+
+Open [http://localhost](http://localhost) in your browser.
+
+**Test credentials:**
+- Email: `vendedor1@gmail.com`
+- Password: `vendedor1`
+
+---
+
+## Stopping the app
+
+```bash
+docker compose down
+```
+
+---
+
+## Endpoints
+
+### Web routes (browser, requires authentication)
+
+| Method | URL | Description |
+|--------|-----|-------------|
+| GET | `/` | Welcome / landing page |
+| GET | `/inicio` | Seller dashboard (home) |
+| GET | `/nuevoPedido` | Start a new order (requires active cart) |
+| GET | `/nuevoPedido/articulos` | Browse available products |
+| GET | `/detalle_articulo/{id}` | View product detail |
+| GET | `/carrito` | View current cart |
+| GET | `/pedido` | Order summary before confirming |
+| POST | `/pedidosRealizado` | Submit / place an order |
+| GET | `/misPedidos` | View seller's order history |
+
+> All routes except `/` require authentication via Sanctum and the `vendedor` role.
+
+### Admin routes
+
+| Method | URL | Description |
+|--------|-----|-------------|
+| GET | `/admin` | Admin dashboard (requires `administrador` role) |
+
+### API routes
+
+| Method | URL | Description |
+|--------|-----|-------------|
+| GET | `/api/user` | Returns the authenticated user (Bearer token required) |
+
+**Example API request:**
+
+```bash
+curl -X GET http://localhost/api/user \
+  -H "Authorization: Bearer YOUR_TOKEN_HERE" \
+  -H "Accept: application/json"
+```
+
+---
+
+## Stack
+
+- **Backend:** Laravel 8, PHP 8.0
+- **Frontend:** Livewire 2, Tailwind CSS
+- **Auth:** Laravel Jetstream + Sanctum
+- **Database:** MySQL 8.0
+- **Cache / Queue:** Redis
+- **Mail (dev):** MailHog — dashboard at [http://localhost:8025](http://localhost:8025)
+- **Containerization:** Docker + Docker Compose
