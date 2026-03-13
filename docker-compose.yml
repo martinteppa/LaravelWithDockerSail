@@ -1,27 +1,31 @@
 # For more information: https://laravel.com/docs/sail
 version: '3'
 services:
-    laravel.test:
+    app:
         build:
-            context: ./vendor/laravel/sail/runtimes/8.0
+            context: .
             dockerfile: Dockerfile
-            args:
-                WWWGROUP: '${WWWGROUP}'
-        image: sail-8.0/app
+        image: laravel-app
         ports:
             - '${APP_PORT:-80}:80'
         environment:
-            WWWUSER: '${WWWUSER}'
-            LARAVEL_SAIL: 1
+            APP_ENV: '${APP_ENV}'
+            APP_KEY: '${APP_KEY}'
+            DB_HOST: mysql
+            DB_PORT: 3306
+            DB_DATABASE: '${DB_DATABASE}'
+            DB_USERNAME: '${DB_USERNAME}'
+            DB_PASSWORD: '${DB_PASSWORD}'
+            REDIS_HOST: redis
+            MAIL_HOST: mailhog
         volumes:
             - '.:/var/www/html'
+            - '/var/www/html/vendor'
         networks:
             - sail
         depends_on:
             - mysql
-            # - pgsql
             - redis
-            # - selenium
     # selenium:
     #     image: 'selenium/standalone-chrome'
     #     volumes:
